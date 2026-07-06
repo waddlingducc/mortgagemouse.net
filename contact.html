@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact MortgageMouse - send us a message with questions, feedback, or suggestions.">
+  <title>Contact - MortgageMouse</title>
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <a href="index.html" class="logo"><img src="logo.png" alt="MortgageMouse logo">Mortgage<span>Mouse</span></a>
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h1>Contact Us</h1>
+    <p>Have a question, found a bug, or want to suggest something? We'd like to hear from you.</p>
+  </div>
+
+  <div class="page-content">
+    <h2>Get in Touch</h2>
+    <p>This is a small side project, so response times may vary — but we do read every message. If something in the calculator seems off or you have an idea for a useful feature, let us know.</p>
+
+    <form id="contactForm" class="contact-form" style="margin-top: 22px;">
+      <div class="form-group">
+        <label for="contactName">Your Name</label>
+        <input type="text" id="contactName" name="name" placeholder="Jane Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contactEmail">Email Address</label>
+        <input type="email" id="contactEmail" name="email" placeholder="jane@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contactSubject">Subject</label>
+        <select id="contactSubject" name="subject">
+          <option value="">Select a topic...</option>
+          <option value="bug">Something's not calculating right</option>
+          <option value="feature">Feature request</option>
+          <option value="general">General question</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="contactMessage">Message</label>
+        <textarea id="contactMessage" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+      <div id="successMsg" class="success-msg">Thanks for reaching out! We'll get back to you as soon as we can.</div>
+    </form>
+
+    <h2 style="margin-top: 36px;">Common Questions</h2>
+
+    <p><strong>The calculator doesn't include PMI — can you add it?</strong><br>
+    It's on the list. PMI rates vary quite a bit depending on your loan-to-value ratio and the lender, so we want to handle it properly rather than just slap in a rough estimate. For now, a rough rule of thumb is to add 0.5–1% of your loan amount annually (divide by 12 for monthly).</p>
+
+    <p><strong>Can I save or print my results?</strong><br>
+    Your browser's built-in print function (Ctrl+P or Cmd+P) works well for this — just run the calculation first, then print. The layout should come out reasonably clean.</p>
+
+    <p><strong>Do you store any of my information?</strong><br>
+    No. The calculator runs entirely in your browser. We don't collect, store, or transmit any of the numbers you enter. See our <a href="privacy-policy.html">privacy policy</a> for full details.</p>
+
+    <p><strong>The numbers look different from what my lender quoted — why?</strong><br>
+    A few reasons: lenders may round differently, the first payment date affects the exact amount, and this calculator doesn't account for PMI, HOA fees, or certain loan-specific adjustments. Your lender's Loan Estimate document is always the authoritative number.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>Privacy</h4>
+      <p>We respect your privacy. Minimal cookies for preferences only. We do not sell personal info.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Cookies</h4>
+      <p>Essential cookies only (UI preferences). Control cookies in your browser.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Accessibility</h4>
+      <p>We aim for WCAG 2.1 AA. Contact us if you encounter barriers.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="calculator.js"></script>
+</body>
+</html>

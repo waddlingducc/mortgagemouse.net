@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free mortgage calculator - figure out your monthly payment, total interest, and see a full amortization schedule. Works for fixed-rate home loans.">
+  <meta name="keywords" content="mortgage calculator, home loan calculator, monthly payment, amortization schedule, fixed rate mortgage">
+  <title>Mortgage Calculator - Monthly Payment & Amortization</title>
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <a href="index.html" class="logo"><img src="logo.png" alt="MortgageMouse logo">Mortgage<span>Mouse</span></a>
+    <nav>
+      <a href="index.html" class="active">Calculator</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h1>Mortgage Payment Calculator</h1>
+    <p>Enter your loan details below to estimate your monthly payment and total cost.</p>
+  </div>
+
+  <div class="calc-wrap">
+    <!-- Input Form -->
+    <div class="card">
+      <h2>Loan Details</h2>
+      <form id="mortgageForm">
+        <div class="form-group">
+          <label for="homePrice">Home Price</label>
+          <div class="input-prefix">
+            <span>$</span>
+            <input type="number" id="homePrice" placeholder="350,000" min="0" step="1000" value="350000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="downPayment">Down Payment</label>
+          <div class="input-prefix">
+            <span>$</span>
+            <input type="number" id="downPayment" placeholder="70,000" min="0" step="1000" value="70000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="interestRate">Annual Interest Rate</label>
+          <div class="input-suffix">
+            <span>%</span>
+            <input type="number" id="interestRate" placeholder="6.5" min="0.1" max="30" step="0.01" value="6.75">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loanTerm">Loan Term</label>
+          <select id="loanTerm">
+            <option value="30" selected>30 years</option>
+            <option value="20">20 years</option>
+            <option value="15">15 years</option>
+            <option value="10">10 years</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="propertyTax">Annual Property Tax <small style="font-weight:400; color:#888">(optional)</small></label>
+          <div class="input-prefix">
+            <span>$</span>
+            <input type="number" id="propertyTax" placeholder="4,200" min="0" step="100" value="4200">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="homeInsurance">Annual Home Insurance <small style="font-weight:400; color:#888">(optional)</small></label>
+          <div class="input-prefix">
+            <span>$</span>
+            <input type="number" id="homeInsurance" placeholder="1,200" min="0" step="100" value="1200">
+          </div>
+        </div>
+
+        <button type="button" class="btn-calc" onclick="calculateMortgage()">Calculate Payment</button>
+        <button type="button" onclick="resetForm()" style="width:100%; margin-top:8px; background:none; border:1px solid #ddd; border-radius:5px; padding:8px 0; font-size:0.9rem; color:#666; cursor:pointer;">Reset</button>
+      </form>
+    </div>
+
+    <!-- Results -->
+    <div class="card results-card">
+      <h2>Your Estimated Payment</h2>
+
+      <!-- Placeholder before calculate is clicked -->
+      <div id="placeholder" class="results-placeholder">
+        <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+        Fill in the loan details and click <strong>Calculate Payment</strong> to see your results.
+      </div>
+
+      <!-- Results (hidden until calculated) -->
+      <div id="resultSection" class="hidden">
+        <div class="monthly-payment">
+          <div class="label">Estimated Monthly Payment</div>
+          <div class="amount" id="monthlyAmount">$0.00</div>
+          <div class="note">principal, interest, tax &amp; insurance</div>
+        </div>
+
+        <div class="breakdown">
+          <div class="breakdown-row">
+            <span class="bl">Loan Amount</span>
+            <span class="bv" id="loanAmountDisplay">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="bl">Principal &amp; Interest</span>
+            <span class="bv" id="principalInterest">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="bl">Monthly Property Tax</span>
+            <span class="bv" id="monthlyTax">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="bl">Monthly Insurance</span>
+            <span class="bv" id="monthlyInsurance">—</span>
+          </div>
+          <div class="breakdown-row total">
+            <span class="bl">Total Interest Paid</span>
+            <span class="bv" id="totalInterest">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="bl">Total Loan Cost</span>
+            <span class="bv" id="totalCost">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Amortization Schedule -->
+  <div id="amortSection" class="card amort-section hidden">
+    <h2>Amortization Schedule</h2>
+    <p>Month-by-month breakdown of how your payments are applied to principal vs. interest.</p>
+    <button class="amort-toggle" id="amortBtn" onclick="toggleAmort()">Show Full Schedule</button>
+    <div id="amortTableWrap" class="amort-table-wrap hidden">
+      <table class="amort-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Payment</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody id="amortBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Info boxes -->
+  <div class="info-boxes">
+    <div class="info-box">
+      <h3>What's in my monthly payment?</h3>
+      <p>Your payment typically covers four things: principal (paying down the loan), interest (the lender's fee), property taxes, and homeowner's insurance. Lenders often call this "PITI."</p>
+    </div>
+    <div class="info-box">
+      <h3>How does interest rate affect cost?</h3>
+      <p>Even a small rate difference adds up over 30 years. A half-percent lower rate on a $280k loan can save you over $30,000 in interest. It's worth shopping around with a few lenders.</p>
+    </div>
+    <div class="info-box">
+      <h3>Should I choose 15 or 30 years?</h3>
+      <p>A 15-year loan has a higher monthly payment but you'll pay dramatically less interest overall. A 30-year gives you more breathing room month to month. Run both scenarios above to compare.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>Privacy</h4>
+      <p>We respect your privacy. Minimal cookies for preferences only. We do not sell personal info.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Cookies</h4>
+      <p>Essential cookies only (UI preferences). Control cookies in your browser.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Accessibility</h4>
+      <p>We aim for WCAG 2.1 AA. Contact us if you encounter barriers.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="calculator.js"></script>
+</body>
+</html>

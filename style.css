@@ -1,0 +1,534 @@
+/* Main stylesheet - Mortgage Calculator Site */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background: #f8f8f8;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+header {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 0 20px;
+  border-bottom: 3px solid #2563eb;
+}
+
+header .inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+header .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+  display: inline-flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 30px;
+  width: auto;
+  display: block;
+  margin-right: 9px;
+}
+
+header .logo span {
+  color: #60a5fa;
+}
+
+nav a {
+  color: #cbd5e1;
+  margin-left: 22px;
+  font-size: 0.93rem;
+}
+
+nav a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a.active {
+  color: #fff;
+  border-bottom: 2px solid #60a5fa;
+  padding-bottom: 2px;
+}
+
+/* Main layout */
+main {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Page header */
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  color: #1e3a5f;
+  margin-bottom: 6px;
+}
+
+.page-header p {
+  color: #555;
+  font-size: 0.97rem;
+}
+
+/* Calculator card */
+.calc-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 680px) {
+  .calc-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 26px;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  color: #1e3a5f;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 0.97rem;
+  color: #333;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-prefix {
+  position: relative;
+}
+
+.input-prefix span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 0.93rem;
+  pointer-events: none;
+}
+
+.input-prefix input {
+  padding-left: 22px;
+}
+
+.input-suffix {
+  position: relative;
+}
+
+.input-suffix span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 0.93rem;
+  pointer-events: none;
+}
+
+.input-suffix input {
+  padding-right: 28px;
+}
+
+.btn-calc {
+  width: 100%;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 11px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s;
+}
+
+.btn-calc:hover {
+  background: #1d4ed8;
+}
+
+/* Results */
+.results-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.monthly-payment {
+  text-align: center;
+  padding: 20px 0 22px;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 18px;
+}
+
+.monthly-payment .label {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.monthly-payment .amount {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #1e3a5f;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+
+.monthly-payment .note {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.93rem;
+}
+
+.breakdown-row .bl {
+  color: #555;
+}
+
+.breakdown-row .bv {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+.breakdown-row.total {
+  border-top: 1px solid #e9ecef;
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.breakdown-row.total .bl {
+  font-weight: 600;
+  color: #333;
+}
+
+.breakdown-row.total .bv {
+  color: #2563eb;
+  font-size: 1.05rem;
+}
+
+/* Amortization section */
+.amort-section {
+  margin-top: 32px;
+}
+
+.amort-section h2 {
+  font-size: 1.1rem;
+  color: #1e3a5f;
+  margin-bottom: 4px;
+}
+
+.amort-section p {
+  font-size: 0.88rem;
+  color: #666;
+  margin-bottom: 14px;
+}
+
+.amort-toggle {
+  display: inline-block;
+  margin-bottom: 14px;
+  background: none;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.amort-toggle:hover {
+  background: #eff6ff;
+}
+
+.amort-table-wrap {
+  overflow-x: auto;
+}
+
+.amort-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+.amort-table th {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 9px 12px;
+  text-align: right;
+  font-weight: 600;
+}
+
+.amort-table th:first-child {
+  text-align: left;
+}
+
+.amort-table td {
+  padding: 8px 12px;
+  text-align: right;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.amort-table td:first-child {
+  text-align: left;
+  color: #555;
+}
+
+.amort-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.amort-table tr:hover {
+  background: #eff6ff;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Info boxes */
+.info-boxes {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 680px) {
+  .info-boxes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-box {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.info-box h3 {
+  font-size: 0.97rem;
+  color: #1e3a5f;
+  margin-bottom: 8px;
+}
+
+.info-box p {
+  font-size: 0.87rem;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* Page content */
+.page-content {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 720px;
+}
+
+.page-content h2 {
+  font-size: 1.25rem;
+  color: #1e3a5f;
+  margin: 24px 0 10px;
+}
+
+.page-content h2:first-child {
+  margin-top: 0;
+}
+
+.page-content p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.page-content ul {
+  margin: 10px 0 14px 20px;
+}
+
+.page-content li {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 6px;
+  line-height: 1.55;
+}
+
+/* Contact form */
+.contact-form .form-group {
+  max-width: 480px;
+}
+
+.contact-form textarea {
+  width: 100%;
+  max-width: 480px;
+  padding: 9px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 0.97rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-submit {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 24px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-submit:hover {
+  background: #1d4ed8;
+}
+
+.success-msg {
+  background: #ecfdf5;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: 0.93rem;
+  margin-top: 14px;
+  display: none;
+}
+
+/* Footer */
+footer {
+  background: #1e3a5f;
+  color: #94a3b8;
+  margin-top: 60px;
+  padding: 36px 20px;
+  font-size: 0.87rem;
+}
+
+footer .footer-cols {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+footer .footer-col {
+  flex: 1 1 260px;
+}
+
+footer .footer-col h4 {
+  color: #fff;
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+}
+
+footer .footer-col p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Placeholder state */
+.results-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+  color: #aaa;
+  font-size: 0.93rem;
+}
+
+.results-placeholder svg {
+  display: block;
+  margin: 0 auto 14px;
+  opacity: 0.3;
+}

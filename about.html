@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About MortgageMouse - a free, straightforward mortgage payment calculator built to help homebuyers understand their loan costs.">
+  <title>About - MortgageMouse</title>
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <a href="index.html" class="logo"><img src="logo.png" alt="MortgageMouse logo">Mortgage<span>Mouse</span></a>
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h1>About This Calculator</h1>
+    <p>A little background on why we built this and how it works.</p>
+  </div>
+
+  <div class="page-content">
+    <h2>Why We Made This</h2>
+    <p>Buying a home is one of the biggest financial decisions most people will ever make, and it can be really hard to get a clear picture of what things actually cost. A lot of mortgage calculators out there either bury you in options you don't need, or they oversimplify things so much that the numbers aren't useful.</p>
+    <p>We wanted something in the middle — a calculator that gives you a realistic monthly payment estimate, breaks down where your money is going, and shows you the full amortization schedule if you want to see it. No account required, no email signup, no upsell. Just the math.</p>
+
+    <h2>How the Calculation Works</h2>
+    <p>The monthly principal and interest payment is calculated using the standard fixed-rate amortization formula:</p>
+    <p style="font-family: monospace; background: #f4f6f8; padding: 12px 16px; border-radius: 5px; font-size: 0.9rem; color: #333; margin: 10px 0;">
+      M = P × [r(1+r)^n] / [(1+r)^n - 1]
+    </p>
+    <p>Where:</p>
+    <ul>
+      <li><strong>M</strong> = monthly payment</li>
+      <li><strong>P</strong> = principal loan amount (home price minus down payment)</li>
+      <li><strong>r</strong> = monthly interest rate (annual rate ÷ 12 ÷ 100)</li>
+      <li><strong>n</strong> = total number of payments (years × 12)</li>
+    </ul>
+    <p>Property tax and home insurance are divided by 12 and added on top. These vary quite a bit depending on where you live, so use your own estimates when possible.</p>
+
+    <h2>What This Calculator Does Not Include</h2>
+    <p>A few things that affect your real monthly cost aren't included here:</p>
+    <ul>
+      <li><strong>PMI (Private Mortgage Insurance)</strong> — typically required when your down payment is less than 20%. It's usually around 0.5–1.5% of the loan annually.</li>
+      <li><strong>HOA fees</strong> — common in condos and planned communities.</li>
+      <li><strong>Closing costs</strong> — typically 2–5% of the loan amount, paid upfront.</li>
+      <li><strong>Variable rate changes</strong> — this calculator is for fixed-rate loans only. ARM loans have different rules.</li>
+    </ul>
+    <p>These can add a few hundred dollars per month in some cases, so it's worth factoring them in when you're budgeting for real.</p>
+
+    <h2>Is This Financial Advice?</h2>
+    <p>No. The numbers here are estimates based on the inputs you provide. They're meant to give you a general idea of what to expect — not to replace advice from a licensed mortgage professional or financial advisor. Everyone's situation is different, and a real lender will give you the exact figures based on your credit, income, and the specific property.</p>
+    <p>That said, understanding the math yourself puts you in a much better position when you're talking to lenders. It's worth knowing what the numbers mean before you sign anything.</p>
+
+    <h2>A Note on Accuracy</h2>
+    <p>All calculations happen right in your browser — nothing is sent to a server. The math matches what your lender will use for a fixed-rate loan. If you notice a discrepancy, it's most likely due to rounding or the way lenders handle the first and last payment. The difference is usually small (under $1).</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <h4>Privacy</h4>
+      <p>We respect your privacy. Minimal cookies for preferences only. We do not sell personal info.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Cookies</h4>
+      <p>Essential cookies only (UI preferences). Control cookies in your browser.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Accessibility</h4>
+      <p>We aim for WCAG 2.1 AA. Contact us if you encounter barriers.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="calculator.js"></script>
+</body>
+</html>
